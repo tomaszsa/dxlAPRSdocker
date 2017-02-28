@@ -8,8 +8,10 @@ WORKDIR dxlAPRS/src
 RUN make
 RUN cp afskmodem aprsmap gps2aprs gps2digipos sdrradio sdrtst sondemod sondeudp udpbox udpflex udpgate4 udphub udprfnet /usr/local/bin
 
-RUN apt-get -y install xterm screen
-RUN apt-get -y install wget curl
+WORKDIR /root
+RUN rm -rf dxlAPRS
+
+RUN apt-get -y install xterm screen wget curl
 
 # from http://fabiorehm.com/blog/2014/09/11/running-gui-apps-with-docker/
 RUN export uid=1000 gid=1000 && \
